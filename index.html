@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Links Grupos — Seazone Oficial</title>
+<style>
+:root {
+  --navy:        #0D2847;
+  --navy-mid:    #1A3F6A;
+  --teal:        #00A896;
+  --teal-hover:  #008F7E;
+  --teal-glow:   rgba(0,168,150,.14);
+  --bg:          #EDF2F7;
+  --surface:     #FFFFFF;
+  --border:      #C9D9E8;
+  --text:        #0D2847;
+  --muted:       #6B88A4;
+  --ok:          #10B981;
+  --ok-bg:       #EDFBF5;
+  --ok-border:   #A3E9CC;
+  --sh:          0 1px 2px rgba(13,40,71,.06), 0 1px 5px rgba(13,40,71,.04);
+  --r:           8px;
+  --font:        'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #08101D; --surface: #0E1E34; --border: #1B3254;
+  --text: #DCE8F4; --muted: #7A9BB8;
+  --ok-bg: #04200F; --ok-border: #0A5232;
+  --teal-glow: rgba(0,168,150,.12);
+  --sh: 0 1px 3px rgba(0,0,0,.35);
+}}
+:root[data-theme="light"] {
+  --bg: #EDF2F7; --surface: #FFFFFF; --border: #C9D9E8;
+  --text: #0D2847; --muted: #6B88A4;
+  --ok-bg: #EDFBF5; --ok-border: #A3E9CC; --teal-glow: rgba(0,168,150,.14);
+  --sh: 0 1px 2px rgba(13,40,71,.06), 0 1px 5px rgba(13,40,71,.04);
+}
+:root[data-theme="dark"] {
+  --bg: #08101D; --surface: #0E1E34; --border: #1B3254;
+  --text: #DCE8F4; --muted: #7A9BB8;
+  --ok-bg: #04200F; --ok-border: #0A5232; --teal-glow: rgba(0,168,150,.12);
+  --sh: 0 1px 3px rgba(0,0,0,.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.hd {
+  background: var(--navy);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+.hd-left { display: flex; align-items: center; gap: 12px; }
+.hd-icon {
+  width: 36px; height: 36px;
+  background: var(--teal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hd-icon svg { width: 20px; height: 20px; }
+.hd-title { color: #fff; font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.hd-sub { color: rgba(255,255,255,.48); font-size: 12px; margin-top: 1px; }
+
+.prog-pill {
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  padding: 6px 14px;
+  display: flex; align-items: center; gap: 10px;
+  color: #fff; font-size: 13px; font-weight: 500;
+  white-space: nowrap;
+}
+.prog-track {
+  width: 72px; height: 4px;
+  background: rgba(255,255,255,.18);
+  border-radius: 2px; overflow: hidden;
+}
+.prog-fill {
+  height: 100%; background: var(--teal); border-radius: 2px;
+  transition: width .35s ease;
+}
+
+.ctrl {
+  padding: 12px 24px;
+  display: flex; gap: 8px; align-items: center;
+  background: var(--bg);
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  border-bottom: 1px solid var(--border);
+}
+.srch-wrap { flex: 1; position: relative; }
+.srch-ic {
+  position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+  color: var(--muted); pointer-events: none;
+}
+.srch {
+  width: 100%; padding: 8px 12px 8px 34px;
+  border: 1px solid var(--border); border-radius: var(--r);
+  background: var(--surface); color: var(--text);
+  font-family: var(--font); font-size: 14px; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.srch::placeholder { color: var(--muted); }
+.srch:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-glow); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 13px;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+  text-decoration: none;
+}
+.btn:hover { border-color: var(--teal); color: var(--teal); }
+.btn:active { transform: scale(.98); }
+.btn-teal {
+  background: var(--teal); color: #fff; border-color: var(--teal);
+}
+.btn-teal:hover { background: var(--teal-hover); border-color: var(--teal-hover); color: #fff; }
+
+.list {
+  padding: 16px 24px 48px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex; flex-direction: column; gap: 5px;
+}
+
+.row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 10px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  box-shadow: var(--sh);
+  transition: border-color .15s, background .15s;
+}
+.row.filled {
+  background: var(--ok-bg);
+  border-color: var(--ok-border);
+}
+.row.hidden { display: none; }
+
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border);
+  transition: background .2s;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.filled .dot { background: var(--ok); }
+
+.gname {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.iarea { display: flex; align-items: center; gap: 6px; }
+
+.linput {
+  width: 270px;
+  padding: 7px 10px;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font); font-size: 12.5px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.linput::placeholder { color: var(--muted); }
+.linput:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-glow); }
+.filled .linput { border-color: var(--ok); }
+
+.abtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 6px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--muted);
+  cursor: pointer; transition: all .15s;
+  text-decoration: none;
+  opacity: 0; pointer-events: none;
+}
+.abtn:hover { border-color: var(--teal); color: var(--teal); }
+.abtn.open:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.filled .abtn { opacity: 1; pointer-events: all; }
+
+.empty {
+  text-align: center; padding: 48px 24px;
+  color: var(--muted); display: none; font-size: 14px;
+}
+.empty.on { display: block; }
+
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--navy); color: #fff;
+  padding: 10px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,.28);
+  transition: transform .25s ease;
+  z-index: 999; white-space: nowrap;
+}
+.toast.on { transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 680px) {
+  .hd { padding: 12px 16px; }
+  .ctrl { padding: 10px 14px; top: 60px; flex-wrap: wrap; }
+  .list { padding: 12px 14px 48px; }
+  .row { grid-template-columns: 10px 1fr; }
+  .iarea { grid-column: 2; }
+  .linput { width: 100%; }
+  .prog-pill { display: none; }
+}
+</style>
+
+<header class="hd">
+  <div class="hd-left">
+    <div class="hd-icon">
+      <svg viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.548 4.109 1.508 5.844L0 24l6.335-1.491A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.645-.52-5.148-1.423l-.37-.219-3.76.885.944-3.652-.243-.378A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+    </div>
+    <div>
+      <div class="hd-title">Links de Convite — Seazone Oficial</div>
+      <div class="hd-sub">Cadastre o link de cada grupo WhatsApp</div>
+    </div>
+  </div>
+  <div class="prog-pill">
+    <div class="prog-track"><div class="prog-fill" id="pbar" style="width:0%"></div></div>
+    <span id="ptext">0 / 38</span>
+  </div>
+</header>
+
+<div class="ctrl">
+  <div class="srch-wrap">
+    <span class="srch-ic">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    </span>
+    <input class="srch" id="srch" type="text" placeholder="Filtrar grupos..." autocomplete="off">
+  </div>
+  <button class="btn btn-teal" id="btn-share">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>
+    </svg>
+    Compartilhar
+  </button>
+  <button class="btn" id="btn-export">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Exportar lista
+  </button>
+</div>
+
+<main class="list" id="list"></main>
+<div class="empty" id="empty">Nenhum grupo encontrado para "<span id="stxt"></span>"</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const GROUPS = [
+  {id:55531198, name:"3. Canasvieiras Spot - Seazone Oficial"},
+  {id:55531199, name:"4. Campeche Spot - Seazone Oficial"},
+  {id:55531205, name:"5. Ilha do Campeche Spot - Seazone Oficial"},
+  {id:55531203, name:"6. Ilha do Campeche II Spot - Seazone Oficial"},
+  {id:55531206, name:"7. Japaratinga Spot - Seazone Oficial"},
+  {id:56919255, name:"10. Trancoso Spot - Seazone Oficial"},
+  {id:55531173, name:"11. Rosa Sul Spot - Seazone Oficial"},
+  {id:55531183, name:"12. Urubici Spot - Seazone Oficial"},
+  {id:55531186, name:"14. Salvador Spot - Seazone Oficial"},
+  {id:55531195, name:"15. Santo Antônio - Seazone Oficial"},
+  {id:55531201, name:"16. Barra Spot - Seazone Oficial"},
+  {id:55531182, name:"17. Morro das Pedras Spot - Seazone Oficial"},
+  {id:55531202, name:"18. Imbassaí Spot - Seazone Oficial"},
+  {id:55531184, name:"19. Urubici Spot II - Seazone Oficial"},
+  {id:55531200, name:"20. Cachoeira Spot - Seazone Oficial"},
+  {id:55531204, name:"23. Sul da Ilha Spot - Seazone Oficial"},
+  {id:55531185, name:"24. Rosa Norte Spot - Seazone Oficial"},
+  {id:55531196, name:"31. Santinho Spot - Seazone Oficial"},
+  {id:55531197, name:"37. Ponta das Canas Spot - Seazone Oficial"},
+  {id:55531222, name:"Barra Grande Spot - Seazone Oficial"},
+  {id:55531221, name:"Batel Spot - Seazone Oficial"},
+  {id:55531207, name:"Bonito Spot - Seazone Oficial"},
+  {id:55531220, name:"Bonito Spot II - Seazone Oficial"},
+  {id:55531208, name:"Cachoeira Beach Spot - Seazone Oficial"},
+  {id:55531219, name:"Canas Beach Spot - Seazone Oficial"},
+  {id:55531194, name:"Caragüí Spot - Seazone Oficial"},
+  {id:55531176, name:"Foz Spot - Seazone Oficial"},
+  {id:55531180, name:"Ingleses Spot - Seazone Oficial"},
+  {id:55531218, name:"Itacaré Spot - Seazone Oficial"},
+  {id:55531193, name:"Jurerê Beach Spot - Seazone Oficial"},
+  {id:55531192, name:"Jurerê Spot II - Seazone Oficial"},
+  {id:55531165, name:"Jurerê Spot III - Seazone Oficial"},
+  {id:55531226, name:"Marista 144 Spot - Seazone Oficial"},
+  {id:55531191, name:"Meireles Spot - Seazone Oficial"},
+  {id:55531190, name:"Natal Spot - Seazone Oficial"},
+  {id:55531189, name:"Novo Campeche Spot - Seazone Oficial"},
+  {id:55531188, name:"Novo Campeche Spot II - Seazone Oficial"},
+  {id:55531187, name:"Ponta das Canas Spot II - Seazone Oficial"}
+];
+
+const TOTAL = GROUPS.length;
+let links = {};
+let toastTmr;
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function loadData() {
+  try {
+    const hash = location.hash;
+    if (hash.startsWith('#data=')) {
+      const d = JSON.parse(atob(decodeURIComponent(hash.slice(6))));
+      if (typeof d === 'object') { links = d; history.replaceState(null,'',location.pathname); return; }
+    }
+  } catch(e){}
+  try {
+    const s = localStorage.getItem('sz-wpp-links');
+    if (s) links = JSON.parse(s);
+  } catch(e){}
+}
+
+function save(){ try{ localStorage.setItem('sz-wpp-links', JSON.stringify(links)); }catch(e){} }
+
+function updateProg() {
+  const n = GROUPS.filter(g => links[g.id] && links[g.id].trim()).length;
+  document.getElementById('pbar').style.width = Math.round(n/TOTAL*100)+'%';
+  document.getElementById('ptext').textContent = n+' / '+TOTAL;
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastTmr);
+  toastTmr = setTimeout(()=>t.classList.remove('on'), 2600);
+}
+
+function copy(text) {
+  navigator.clipboard.writeText(text).then(()=>toast('Copiado!')).catch(()=>{
+    const el = Object.assign(document.createElement('textarea'),{value:text});
+    Object.assign(el.style,{position:'fixed',opacity:'0'});
+    document.body.appendChild(el); el.select(); document.execCommand('copy');
+    document.body.removeChild(el); toast('Copiado!');
+  });
+}
+
+function makeRow(g) {
+  const val = links[g.id] || '';
+  const ok = val.trim() !== '';
+  const div = document.createElement('div');
+  div.className = 'row' + (ok ? ' filled' : '');
+  div.dataset.id = g.id;
+  div.dataset.q = g.name.toLowerCase();
+  div.innerHTML = `
+    <div class="dot"></div>
+    <div class="gname" title="${esc(g.name)}">${esc(g.name)}</div>
+    <div class="iarea">
+      <input class="linput" type="url" placeholder="chat.whatsapp.com/..." value="${esc(val)}" data-id="${g.id}">
+      <a class="abtn open" href="${esc(val)||'#'}" target="_blank" rel="noopener" title="Abrir grupo">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <button class="abtn cpbtn" title="Copiar link" data-id="${g.id}">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>`;
+  return div;
+}
+
+function applyFilter() {
+  const q = document.getElementById('srch').value.toLowerCase().trim();
+  let vis = 0;
+  document.querySelectorAll('.row').forEach(row => {
+    const show = !q || row.dataset.q.includes(q);
+    row.classList.toggle('hidden', !show);
+    if (show) vis++;
+  });
+  document.getElementById('stxt').textContent = q;
+  document.getElementById('empty').classList.toggle('on', vis === 0);
+}
+
+function handleInput(e) {
+  const inp = e.target;
+  const id = +inp.dataset.id;
+  let v = inp.value.trim();
+  if (v && !v.startsWith('http') && !v.startsWith('//')) v = 'https://' + v;
+  if (v !== inp.value) inp.value = v;
+  links[id] = v;
+  save();
+  const row = inp.closest('.row');
+  row.classList.toggle('filled', v !== '');
+  const openA = row.querySelector('.open');
+  if (openA) openA.href = v || '#';
+  updateProg();
+}
+
+function render() {
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  GROUPS.forEach(g => list.appendChild(makeRow(g)));
+  updateProg();
+  applyFilter();
+
+  list.querySelectorAll('.linput').forEach(inp => {
+    inp.addEventListener('input', handleInput);
+    inp.addEventListener('paste', ev => setTimeout(() => handleInput({target: ev.target}), 30));
+  });
+
+  list.querySelectorAll('.cpbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = links[+btn.dataset.id];
+      if (v) copy(v);
+    });
+  });
+}
+
+document.getElementById('srch').addEventListener('input', applyFilter);
+
+document.getElementById('btn-share').addEventListener('click', () => {
+  const filled = Object.fromEntries(Object.entries(links).filter(([,v]) => v && v.trim()));
+  if (!Object.keys(filled).length) { toast('Preencha ao menos um link antes.'); return; }
+  const url = location.origin + location.pathname + '#data=' + encodeURIComponent(btoa(JSON.stringify(filled)));
+  copy(url);
+  toast('Link copiado! Compartilhe com o time.');
+});
+
+document.getElementById('btn-export').addEventListener('click', () => {
+  const lines = GROUPS
+    .filter(g => links[g.id] && links[g.id].trim())
+    .map(g => `${g.name}: ${links[g.id].trim()}`);
+  if (!lines.length) { toast('Nenhum link preenchido ainda.'); return; }
+  copy(lines.join('\n'));
+  toast(lines.length + ' links copiados!');
+});
+
+loadData();
+render();
+</script>
+
+</html>
