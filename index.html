@@ -463,6 +463,29 @@ document.getElementById('srch').addEventListener('input', applyFilter);
   if (loaded === null){
     setSyncBadge('err', 'Erro ao carregar');
     links = {};
+  } else if (Object.keys(loaded).length === 0) {
+    // links.json vazio — tenta migrar do localStorage anterior
+    try {
+      const old = localStorage.getItem('sz-wpp-links');
+      if (old) {
+        const parsed = JSON.parse(old);
+        if (parsed && Object.keys(parsed).length > 0) {
+          links = parsed;
+          dirty = true;
+          setSyncBadge('saving', 'Links recuperados — clique em Salvar para todos');
+          toast('Links recuperados do navegador! Clique em "Salvar para todos".');
+        } else {
+          links = {};
+          setSyncBadge('ok', 'Atualizado');
+        }
+      } else {
+        links = {};
+        setSyncBadge('ok', 'Atualizado');
+      }
+    } catch(e) {
+      links = {};
+      setSyncBadge('ok', 'Atualizado');
+    }
   } else {
     links = loaded;
     setSyncBadge('ok', 'Atualizado');
